@@ -5,6 +5,8 @@ import (
 	"net"
 )
 
+// Creates a UDP Connection to the given port. The port is passed
+// to net.ResolveUDPAddr to start the connection
 func ConnectUDP(port string) *net.UDPConn {
 	udpAddress, err := net.ResolveUDPAddr("udp4", port)
 
@@ -21,6 +23,8 @@ func ConnectUDP(port string) *net.UDPConn {
 	return conn
 }
 
+// Reads the data available on the UDP connection
+// Data will be read into packet data and extra data
 func ReadUDP(conn *net.UDPConn, packetData []byte, extraData []byte) {
 	_, _, _, _, err := conn.ReadMsgUDP(packetData, extraData)
 

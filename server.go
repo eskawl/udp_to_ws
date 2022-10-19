@@ -11,6 +11,8 @@ type Handlers interface {
 	UdpWebSocket(c *websocket.Conn, w http.ResponseWriter, r *http.Request)
 }
 
+// Starts the WebSocket server with the given handler
+// If a addr option is not specified the default port is 8080
 func StartServer(handlers Handlers, options ...Option) {
 	serverConfig := &ServerConfig{}
 
